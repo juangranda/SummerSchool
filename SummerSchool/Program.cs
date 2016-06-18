@@ -145,6 +145,7 @@ namespace SummerSchool
                 Option1();
                 Console.WriteLine();
                 Menu();
+                GetChoice();
                 return true;
             }
             else if (Is2(choice) == true)
@@ -152,12 +153,15 @@ namespace SummerSchool
                 Option2();
                 Console.WriteLine();
                 Menu();
+                GetChoice();
                 return true;
             }
             else if (Is3(choice) == true)
             {
                 Option3(studentList);
                 Console.WriteLine();
+                MenuWithoutClear();
+                GetChoice();
                 return true;
             }
             else if (Is4(choice) == true)
