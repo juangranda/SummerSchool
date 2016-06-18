@@ -35,12 +35,16 @@ namespace SummerSchool
         }
         public static void Menu()
         {
+            Console.Clear();
             Console.WriteLine("MAIN MENU");
             Console.WriteLine();
             Console.WriteLine("1) Enroll a student");
             Console.WriteLine("2) Unenroll a student");
             Console.WriteLine("3) Print out the list of enrolled students");
             Console.WriteLine("4) Exit");
+            Console.WriteLine();
+            Console.WriteLine("ENTER A NUMBER THAT CORRESPONDS TO YOUR CHOICE IN THE MENU:");
+            Console.WriteLine();
         }
 
         public static string MenuChoice(string choice)
@@ -66,6 +70,10 @@ namespace SummerSchool
             Console.WriteLine("Please enter the name of the student you want to enroll");
             string newStudent = Console.ReadLine();
             Console.WriteLine(newStudent + " has been enrolled and will need to pay £200");
+            Console.WriteLine();
+            Console.WriteLine("Press any key to return to main menu");
+            Console.WriteLine();
+            Console.ReadKey();
         }
 
         public static bool Is2(string choice)
