@@ -8,8 +8,54 @@ namespace SummerSchool
 {
     class Program
     {
-        public static string[] studentList = new string[15];
-
+        public static bool malfoyBool(string newEnrollment)
+        {
+            if ((newEnrollment.ToLower()).Contains(studentMalfoy))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        static string studentMalfoy = "malfoy";
+        public static string[] studentList = new string[3];
+        public static void studentFee0()
+        {
+            if (studentList[0].Contains(potter))
+            {
+                studentList[0] = (studentList[0] + " ($100)");
+            }
+            else
+            {
+                studentList[0] = (studentList[0] + " ($200)");
+            }
+        }
+        public static void studentFee1()
+        {
+            if (studentList[1].Contains(potter))
+            {
+                studentList[1] = (studentList[1] + " ($100)");
+            }
+            else
+            {
+                studentList[1] = (studentList[1] + " ($200)");
+            }
+        }
+        public static void studentFeeList()
+        {
+            if (studentList[0] != null)
+            {
+                studentFee0();
+            }
+            if (studentList[1] != null)
+            {
+                studentFee1();
+            }
+        }
+        static string potter = "potter";
+        static string newEnrollment;
         static void Main(string[] args)
         {
             Menu();
@@ -19,25 +65,81 @@ namespace SummerSchool
         }
         public static void Menu()
         {
-            Console.Clear();
-            Console.WriteLine("MAIN MENU");
-            Console.WriteLine();
-            Console.WriteLine("1) Enroll a student");
-            Console.WriteLine("2) Unenroll a student");
-            Console.WriteLine("3) Print out the list of enrolled students");
-            Console.WriteLine("4) Exit");
-            Console.WriteLine();
-            Console.WriteLine("ENTER A NUMBER THAT CORRESPONDS TO YOUR CHOICE IN THE MENU:");
-            Console.WriteLine();
+            if (studentList[0] == null)
+            {
+                Console.Clear();
+                Console.WriteLine("MAIN MENU");
+                Console.WriteLine();
+                Console.WriteLine("1) Enroll a student");
+                Console.WriteLine("3) Print out the list of enrolled students");
+                Console.WriteLine("4) Exit");
+                Console.WriteLine();
+                Console.WriteLine("ENTER A NUMBER THAT CORRESPONDS TO YOUR CHOICE IN THE MENU:");
+                Console.WriteLine();
+            }
+            else if (studentList[2] != null)
+            {
+                Console.Clear();
+                Console.WriteLine("MAIN MENU");
+                Console.WriteLine();
+                Console.WriteLine("2) Unenroll a student");
+                Console.WriteLine("3) Print out the list of enrolled students");
+                Console.WriteLine("4) Exit");
+                Console.WriteLine();
+                Console.WriteLine("ENTER A NUMBER THAT CORRESPONDS TO YOUR CHOICE IN THE MENU:");
+                Console.WriteLine();
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("MAIN MENU");
+                Console.WriteLine();
+                Console.WriteLine("1) Enroll a student");
+                Console.WriteLine("2) Unenroll a student");
+                Console.WriteLine("3) Print out the list of enrolled students");
+                Console.WriteLine("4) Exit");
+                Console.WriteLine();
+                Console.WriteLine("ENTER A NUMBER THAT CORRESPONDS TO YOUR CHOICE IN THE MENU:");
+                Console.WriteLine();
+
+            }
         }
         public static void MenuWithoutClear()
         {
-            Console.WriteLine();
-            Console.WriteLine("1) Enroll a student");
-            Console.WriteLine("2) Unenroll a student");
-            Console.WriteLine("3) Print out the list of enrolled students");
-            Console.WriteLine("4) Exit");
-            Console.WriteLine();
+            if (studentList[0] == null)
+            {
+                Console.WriteLine("MAIN MENU");
+                Console.WriteLine();
+                Console.WriteLine("1) Enroll a student");
+                Console.WriteLine("3) Print out the list of enrolled students");
+                Console.WriteLine("4) Exit");
+                Console.WriteLine();
+                Console.WriteLine("ENTER A NUMBER THAT CORRESPONDS TO YOUR CHOICE IN THE MENU:");
+                Console.WriteLine();
+            }
+            else if (studentList[2] != null)
+            {
+                Console.WriteLine("MAIN MENU");
+                Console.WriteLine();
+                Console.WriteLine("2) Unenroll a student");
+                Console.WriteLine("3) Print out the list of enrolled students");
+                Console.WriteLine("4) Exit");
+                Console.WriteLine();
+                Console.WriteLine("ENTER A NUMBER THAT CORRESPONDS TO YOUR CHOICE IN THE MENU:");
+                Console.WriteLine();
+            }
+            else
+            {
+                Console.WriteLine("MAIN MENU");
+                Console.WriteLine();
+                Console.WriteLine("1) Enroll a student");
+                Console.WriteLine("2) Unenroll a student");
+                Console.WriteLine("3) Print out the list of enrolled students");
+                Console.WriteLine("4) Exit");
+                Console.WriteLine();
+                Console.WriteLine("ENTER A NUMBER THAT CORRESPONDS TO YOUR CHOICE IN THE MENU:");
+                Console.WriteLine();
+            }
         }
         public static string MenuChoice(string choice)
         {
@@ -57,15 +159,86 @@ namespace SummerSchool
         }
         public static void Option1()
         {
-            Console.WriteLine("Please enter the name of the student you want to enroll");
-            Console.WriteLine();
-            string newStudent = Console.ReadLine();
-            Console.WriteLine();
-            Console.WriteLine(newStudent + " has been enrolled and will need to pay £200");
-            Console.WriteLine();
-            Console.WriteLine("     Press any key to return to main menu");
-            Console.WriteLine();
-            Console.ReadKey();
+            if ((studentList[0]) == null)
+            {
+                for (int i = 0; i < 1; i++)
+                {
+                    Console.WriteLine("Please enter the name of the student you want to enroll");
+                    Console.WriteLine();
+                    newEnrollment = Console.ReadLine();
+                    if (malfoyBool(newEnrollment))
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine("                   ****** ERROR ******                   ");
+                        Console.WriteLine();
+                        Console.WriteLine("Students with the last name Malfoy are not to be admitted");
+                        Console.WriteLine();
+                    }
+                    else
+                    {
+
+                        studentList[0] = ((newEnrollment).ToLower());
+                        if (PotterLastName(newEnrollment))
+                        {
+                            studentList[0] = (studentList[0]);
+                            Console.WriteLine();
+                            Console.WriteLine(studentList[0] + " has been enrolled and will need to pay £100");
+                        }
+                        else
+                        {
+                            studentList[0] = (studentList[0]);
+                            Console.WriteLine();
+                            Console.WriteLine(studentList[0] + " has been enrolled and will need to pay £200");
+                        }
+                    }
+                }
+                Console.WriteLine();
+                Console.WriteLine("     *Press any key to return to main menu*");
+                Console.WriteLine();
+            }
+            else if ((studentList[1]) == null)
+            {
+                for (int i = 0; i < 1; i++)
+                {
+                    Console.WriteLine("Please enter the name of the student you want to enroll");
+                    Console.WriteLine();
+                    newEnrollment = Console.ReadLine();
+                    studentList[1] = ((newEnrollment).ToLower());
+                    if (PotterLastName(newEnrollment))
+                    {
+                        studentList[1] = (studentList[1]);
+                        Console.WriteLine();
+                        Console.WriteLine(studentList[1] + " has been enrolled and will need to pay £100");
+                    }
+                    else
+                    {
+                        studentList[1] = (studentList[1]);
+                        Console.WriteLine();
+                        Console.WriteLine(studentList[1] + " has been enrolled and will need to pay £200");
+                    }
+                }
+                Console.WriteLine();
+                Console.WriteLine("     *Press any key to return to main menu*");
+                Console.WriteLine();
+            }
+            else if ((studentList[2]) == null)
+            {
+                for (int i = 0; i < 1; i++)
+                {
+                    Console.WriteLine("Please enter the name of the student you want to enroll");
+                    Console.WriteLine();
+                    studentList[2] = (Console.ReadLine());
+                    Console.WriteLine();
+                    Console.WriteLine(studentList[2] + " has been enrolled and will need to pay £200");
+                }
+                Console.WriteLine();
+                Console.WriteLine("     *Press any key to return to main menu*");
+                Console.WriteLine();
+            }
+            else
+            {
+                Console.WriteLine("123");
+            }
         }
         public static bool Is2(string choice)
         {
@@ -103,9 +276,11 @@ namespace SummerSchool
         }
         public static void Option3(string[] studenList)
         {
-            for (int i = 0; i < studenList.Length; i++)
+            studentFeeList();
+            for (int i = 0; i < studentList.Length; i++)
             {
-                Console.WriteLine(studenList[i]);
+
+                Console.WriteLine(i + 1 + ". "+ studentList[i]);
             }
         }
         public static bool Is4(string choice)
@@ -143,7 +318,7 @@ namespace SummerSchool
             if (Is1(choice) == true)
             {
                 Option1();
-                Console.WriteLine();
+                Console.ReadLine();
                 Menu();
                 GetChoice();
                 return true;
@@ -158,6 +333,8 @@ namespace SummerSchool
             }
             else if (Is3(choice) == true)
             {
+                Console.WriteLine("LIST OF CURRENT STUDENTS");
+                Console.WriteLine();
                 Option3(studentList);
                 Console.WriteLine();
                 MenuWithoutClear();
@@ -175,30 +352,42 @@ namespace SummerSchool
             }
 
         }
-            /*Console.WriteLine("Invalid Choice");
-            Console.WriteLine("Please select options from the menu. Valid choices are 1, 2, 3, 4");
-            Console.WriteLine();
-            string choice = Console.ReadLine(); 
-            if (choice == "1")
+
+        public static bool PotterLastName(string newEnrollment)
+        {
+            if ((newEnrollment).Contains(potter))
             {
-                Console.WriteLine();
-                Option1();
+                return true;
             }
-            else if (choice == "2")
+            else
             {
-                Console.WriteLine();
-                Option2();
+                return false;
             }
-            else if (choice == "3")
+
+
+        }
+        public static string studentFee()
+        {
+            if (Fee())
             {
-                Console.WriteLine();
-                Option3(studentList);
+                return "(100)";
             }
-            else if (choice == "4")
+            else
             {
-                Console.WriteLine();
-                Option4();
-            }*/
-       
-    }
+                return "(200)";
+            }
+        }
+        public static bool Fee()
+        {
+            if (newEnrollment.Contains(potter))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        }
 }
