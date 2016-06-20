@@ -8,6 +8,7 @@ namespace SummerSchool
 {
     class Program
     {
+        public static string[] feeArray = { " ($100)", " ($200)" };
         public static bool malfoyBool(string newEnrollment)
         {
             if ((newEnrollment.ToLower()).Contains(studentMalfoy))
@@ -25,22 +26,75 @@ namespace SummerSchool
         {
             if (studentList[0].Contains(potter))
             {
-                studentList[0] = (studentList[0] + " ($100)");
+                if (!(studentList[0].Contains("$")))
+                {
+                    studentList[0] = (studentList[0] + feeArray[0]);
+                }
+                else
+                {
+                    studentList[0] = studentList[0];
+                }
             }
             else
             {
-                studentList[0] = (studentList[0] + " ($200)");
+                if (!(studentList[0].Contains("$")))
+                {
+                    studentList[0] = (studentList[0] + feeArray[1]);
+                }
+                else
+                {
+                    studentList[0] = studentList[0];
+                }
             }
         }
         public static void studentFee1()
         {
             if (studentList[1].Contains(potter))
             {
-                studentList[1] = (studentList[1] + " ($100)");
+                if (!(studentList[1].Contains("$")))
+                {
+                    studentList[1] = (studentList[1] + feeArray[0]);
+                }
+                else
+                {
+                    studentList[1] = studentList[1];
+                }
             }
             else
             {
-                studentList[1] = (studentList[1] + " ($200)");
+                if (!(studentList[1].Contains("$")))
+                {
+                studentList[1] = (studentList[1] + feeArray[1]);
+                }
+                else
+                {
+                studentList[1] = studentList[1];
+                }
+            }
+        }
+        public static void studentFee2()
+        {
+            if (studentList[2].Contains(potter))
+            {
+                if (!(studentList[2].Contains("$")))
+                {
+                    studentList[2] = (studentList[2] + feeArray[0]);
+                }
+                else
+                {
+                    studentList[2] = studentList[2];
+                }
+            }
+            else
+            {
+                if (!(studentList[2].Contains("$")))
+                {
+                    studentList[2] = (studentList[2] + feeArray[1]);
+                }
+                else
+                {
+                    studentList[2] = studentList[2];
+                }
             }
         }
         public static void studentFeeList()
@@ -52,6 +106,10 @@ namespace SummerSchool
             if (studentList[1] != null)
             {
                 studentFee1();
+            }
+            if (studentList[2] != null)
+            {
+                studentFee2();
             }
         }
         static string potter = "potter";
@@ -203,18 +261,29 @@ namespace SummerSchool
                     Console.WriteLine("Please enter the name of the student you want to enroll");
                     Console.WriteLine();
                     newEnrollment = Console.ReadLine();
-                    studentList[1] = ((newEnrollment).ToLower());
-                    if (PotterLastName(newEnrollment))
+                    if (malfoyBool(newEnrollment))
                     {
-                        studentList[1] = (studentList[1]);
                         Console.WriteLine();
-                        Console.WriteLine(studentList[1] + " has been enrolled and will need to pay £100");
+                        Console.WriteLine("                   ****** ERROR ******                   ");
+                        Console.WriteLine();
+                        Console.WriteLine("Students with the last name Malfoy are not to be admitted");
+                        Console.WriteLine();
                     }
                     else
                     {
-                        studentList[1] = (studentList[1]);
-                        Console.WriteLine();
-                        Console.WriteLine(studentList[1] + " has been enrolled and will need to pay £200");
+                        studentList[1] = ((newEnrollment).ToLower());
+                        if (PotterLastName(newEnrollment))
+                        {
+                            studentList[1] = (studentList[1]);
+                            Console.WriteLine();
+                            Console.WriteLine(studentList[1] + " has been enrolled and will need to pay £100");
+                        }
+                        else
+                        {
+                            studentList[1] = (studentList[1]);
+                            Console.WriteLine();
+                            Console.WriteLine(studentList[1] + " has been enrolled and will need to pay £200");
+                        }
                     }
                 }
                 Console.WriteLine();
@@ -227,9 +296,31 @@ namespace SummerSchool
                 {
                     Console.WriteLine("Please enter the name of the student you want to enroll");
                     Console.WriteLine();
-                    studentList[2] = (Console.ReadLine());
-                    Console.WriteLine();
-                    Console.WriteLine(studentList[2] + " has been enrolled and will need to pay £200");
+                    newEnrollment = Console.ReadLine();
+                    if (malfoyBool(newEnrollment))
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine("                   ****** ERROR ******                   ");
+                        Console.WriteLine();
+                        Console.WriteLine("Students with the last name Malfoy are not to be admitted");
+                        Console.WriteLine();
+                    }
+                    else
+                    {
+                        studentList[2] = ((newEnrollment).ToLower());
+                        if (PotterLastName(newEnrollment))
+                        {
+                            studentList[2] = (studentList[2]);
+                            Console.WriteLine();
+                            Console.WriteLine(studentList[2] + " has been enrolled and will need to pay £100");
+                        }
+                        else
+                        {
+                            studentList[2] = (studentList[2]);
+                            Console.WriteLine();
+                            Console.WriteLine(studentList[2] + " has been enrolled and will need to pay £200");
+                        }
+                    }
                 }
                 Console.WriteLine();
                 Console.WriteLine("     *Press any key to return to main menu*");
@@ -237,8 +328,14 @@ namespace SummerSchool
             }
             else
             {
-                Console.WriteLine("123");
+                Console.WriteLine("Please choose an available option from the menu");
+                Console.WriteLine();
+                Console.WriteLine("     *Press any key to return to main menu*");
             }
+            Console.WriteLine();
+            //Console.WriteLine("     *Press any key to return to main menu*");
+            Console.WriteLine();
+
         }
         public static bool Is2(string choice)
         {
@@ -352,10 +449,9 @@ namespace SummerSchool
             }
 
         }
-
         public static bool PotterLastName(string newEnrollment)
         {
-            if ((newEnrollment).Contains(potter))
+            if ((newEnrollment.ToLower()).Contains(potter))
             {
                 return true;
             }
@@ -388,6 +484,5 @@ namespace SummerSchool
                 return false;
             }
         }
-
         }
 }
