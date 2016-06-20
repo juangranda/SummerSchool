@@ -113,6 +113,9 @@ namespace SummerSchool
             }
         }
         static string potter = "potter";
+        static string tom = "tom";
+        static string riddle = "riddle";
+        static string voldemort = "voldemort";
         static string newEnrollment;
         public static void feesTotal()
         {
@@ -182,22 +185,6 @@ namespace SummerSchool
             //Console.WriteLine("Total: £" + feeAmountTotal);
         }
 
-        //public static bool nameArrayLength()
-        //{
-        //    int studentListLenght = studentList.Length;
-        //    if (studentListLenght == 1)
-        //    {
-        //        return true;
-        //    }
-        //    else if (studentListLenght == 2)
-        //    {
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        return false;
-        //    }
-        //}
         static void Main(string[] args)
         {
             Menu();
@@ -326,6 +313,12 @@ namespace SummerSchool
                             Console.WriteLine();
                             Console.WriteLine(studentList[0] + " has been enrolled and will need to pay £100");
                         }
+                        else if (TomRiddleVoldemort(newEnrollment)) 
+                        {
+                            studentList[0] = (studentList[0]);
+                            Console.WriteLine();
+                            Console.WriteLine("RED ALERT!!! HE WHO MUST NOT BE NAMED!!!");
+                        }
                         else
                         {
                             studentList[0] = (studentList[0]);
@@ -361,6 +354,12 @@ namespace SummerSchool
                             studentList[1] = (studentList[1]);
                             Console.WriteLine();
                             Console.WriteLine(studentList[1] + " has been enrolled and will need to pay £100");
+                        }
+                        else if (TomRiddleVoldemort(newEnrollment))
+                        {
+                            studentList[0] = (studentList[0]);
+                            Console.WriteLine();
+                            Console.WriteLine("RED ALERT!!! HE WHO MUST NOT BE NAMED!!!");
                         }
                         else
                         {
@@ -398,6 +397,12 @@ namespace SummerSchool
                             Console.WriteLine();
                             Console.WriteLine(studentList[2] + " has been enrolled and will need to pay £100");
                         }
+                        else if (TomRiddleVoldemort(newEnrollment))
+                        {
+                            studentList[0] = (studentList[0]);
+                            Console.WriteLine();
+                            Console.WriteLine("RED ALERT!!! HE WHO MUST NOT BE NAMED!!!");
+                        }
                         else
                         {
                             studentList[2] = (studentList[2]);
@@ -417,9 +422,7 @@ namespace SummerSchool
                 Console.WriteLine("     *Press any key to return to main menu*");
             }
             Console.WriteLine();
-            //Console.WriteLine("     *Press any key to return to main menu*");
             Console.WriteLine();
-
         }
         public static bool Is2(string choice)
         {
@@ -540,12 +543,29 @@ namespace SummerSchool
             {
                 return true;
             }
+            else 
+            {
+                return false;
+            }
+        }
+        public static bool TomRiddleVoldemort(string newEnrollment)
+        {
+            if ((newEnrollment.ToLower()).Contains(tom))
+            {
+                return true;
+            }
+            else if ((newEnrollment.ToLower()).Contains(riddle))
+            {
+                return true;
+            }
+            else if ((newEnrollment.ToLower()).Contains(voldemort))
+            {
+                return true;
+            }
             else
             {
                 return false;
             }
-
-
         }
         public static string studentFee()
         {
