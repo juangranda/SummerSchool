@@ -8,7 +8,7 @@ namespace SummerSchool
 {
     class Program
     {
-        public static string[] feeArray = { " ($100)", " ($200)" };
+        public static string[] feeArray = { " (£100)", " (£200)" };
         public static bool malfoyBool(string newEnrollment)
         {
             if ((newEnrollment.ToLower()).Contains(studentMalfoy))
@@ -26,7 +26,7 @@ namespace SummerSchool
         {
             if (studentList[0].Contains(potter))
             {
-                if (!(studentList[0].Contains("$")))
+                if (!(studentList[0].Contains("£")))
                 {
                     studentList[0] = (studentList[0] + feeArray[0]);
                 }
@@ -37,7 +37,7 @@ namespace SummerSchool
             }
             else
             {
-                if (!(studentList[0].Contains("$")))
+                if (!(studentList[0].Contains("£")))
                 {
                     studentList[0] = (studentList[0] + feeArray[1]);
                 }
@@ -51,7 +51,7 @@ namespace SummerSchool
         {
             if (studentList[1].Contains(potter))
             {
-                if (!(studentList[1].Contains("$")))
+                if (!(studentList[1].Contains("£")))
                 {
                     studentList[1] = (studentList[1] + feeArray[0]);
                 }
@@ -62,7 +62,7 @@ namespace SummerSchool
             }
             else
             {
-                if (!(studentList[1].Contains("$")))
+                if (!(studentList[1].Contains("£")))
                 {
                 studentList[1] = (studentList[1] + feeArray[1]);
                 }
@@ -76,7 +76,7 @@ namespace SummerSchool
         {
             if (studentList[2].Contains(potter))
             {
-                if (!(studentList[2].Contains("$")))
+                if (!(studentList[2].Contains("£")))
                 {
                     studentList[2] = (studentList[2] + feeArray[0]);
                 }
@@ -87,7 +87,7 @@ namespace SummerSchool
             }
             else
             {
-                if (!(studentList[2].Contains("$")))
+                if (!(studentList[2].Contains("£")))
                 {
                     studentList[2] = (studentList[2] + feeArray[1]);
                 }
@@ -114,6 +114,90 @@ namespace SummerSchool
         }
         static string potter = "potter";
         static string newEnrollment;
+        public static void feesTotal()
+        {
+           // int studentListLenght = studentList.Length;
+
+            if (studentList[1] == null)
+            {
+                string fee0Start = studentList[0];
+                int fee0StartInt = fee0Start.IndexOf('£');
+                fee0StartInt = (fee0StartInt + 1);
+                int fee0End = fee0Start.LastIndexOf(')');
+                int numberOfDigitsPosition0 = (fee0End - fee0StartInt);
+                int feeAmountPosition0 = Convert.ToInt32(fee0Start.Substring(fee0StartInt, numberOfDigitsPosition0));
+
+                int feeAmountTotal = feeAmountPosition0;
+                Console.WriteLine("Total: £" + feeAmountTotal);
+            }
+            else if (studentList[2] == null)
+            {
+                string fee0Start = studentList[0];
+                int fee0StartInt = fee0Start.IndexOf('£');
+                fee0StartInt = (fee0StartInt + 1);
+                int fee0End = fee0Start.LastIndexOf(')');
+                int numberOfDigitsPosition0 = (fee0End - fee0StartInt);
+                int feeAmountPosition0 = Convert.ToInt32(fee0Start.Substring(fee0StartInt, numberOfDigitsPosition0));
+
+                string fee1Start = studentList[1];
+                int fee1StartInt = fee1Start.IndexOf('£');
+                fee1StartInt = (fee1StartInt + 1);
+                int fee1End = fee1Start.LastIndexOf(')');
+                int numberOfDigitsPosition1 = (fee1End - fee1StartInt);
+                int feeAmountPosition1 = Convert.ToInt32(fee1Start.Substring(fee1StartInt, numberOfDigitsPosition1));
+
+                int feeAmountTotal = feeAmountPosition0 + feeAmountPosition1;
+                Console.WriteLine("Total: £" + feeAmountTotal);
+            }
+            else //if (studentList[3] != null)
+            {
+                string fee0Start = studentList[0];
+                int fee0StartInt = fee0Start.IndexOf('£');
+                fee0StartInt = (fee0StartInt + 1);
+                int fee0End = fee0Start.LastIndexOf(')');
+                int numberOfDigitsPosition0 = (fee0End - fee0StartInt);
+                int feeAmountPosition0 = Convert.ToInt32(fee0Start.Substring(fee0StartInt, numberOfDigitsPosition0));
+
+                string fee1Start = studentList[1];
+                int fee1StartInt = fee1Start.IndexOf('£');
+                fee1StartInt = (fee1StartInt + 1);
+                int fee1End = fee1Start.LastIndexOf(')');
+                int numberOfDigitsPosition1 = (fee1End - fee1StartInt);
+                int feeAmountPosition1 = Convert.ToInt32(fee1Start.Substring(fee1StartInt, numberOfDigitsPosition1));
+
+                string fee2Start = studentList[2];
+                int fee2StartInt = fee2Start.IndexOf('£');
+                fee2StartInt = (fee2StartInt + 1);
+                int fee2End = fee2Start.LastIndexOf(')');
+                int numberOfDigitsPosition2 = (fee2End - fee2StartInt);
+                int feeAmountPosition2 = Convert.ToInt32(fee2Start.Substring(fee2StartInt, numberOfDigitsPosition2));
+
+
+                int feeAmountTotal = feeAmountPosition0 + feeAmountPosition1 + feeAmountPosition2;
+                Console.WriteLine("Total: £" + feeAmountTotal);
+            }
+
+
+            //int feeAmountTotal = feeAmountPosition0 + feeAmountPosition1;
+            //Console.WriteLine("Total: £" + feeAmountTotal);
+        }
+
+        //public static bool nameArrayLength()
+        //{
+        //    int studentListLenght = studentList.Length;
+        //    if (studentListLenght == 1)
+        //    {
+        //        return true;
+        //    }
+        //    else if (studentListLenght == 2)
+        //    {
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }
+        //}
         static void Main(string[] args)
         {
             Menu();
@@ -379,6 +463,7 @@ namespace SummerSchool
 
                 Console.WriteLine(i + 1 + ". "+ studentList[i]);
             }
+            feesTotal();
         }
         public static bool Is4(string choice)
         {
