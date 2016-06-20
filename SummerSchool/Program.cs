@@ -116,11 +116,10 @@ namespace SummerSchool
         static string tom = "tom";
         static string riddle = "riddle";
         static string voldemort = "voldemort";
+        static int feeAmountPosition0 = 0;
         static string newEnrollment;
         public static void feesTotal()
         {
-           // int studentListLenght = studentList.Length;
-
             if (studentList[1] == null)
             {
                 string fee0Start = studentList[0];
@@ -128,7 +127,7 @@ namespace SummerSchool
                 fee0StartInt = (fee0StartInt + 1);
                 int fee0End = fee0Start.LastIndexOf(')');
                 int numberOfDigitsPosition0 = (fee0End - fee0StartInt);
-                int feeAmountPosition0 = Convert.ToInt32(fee0Start.Substring(fee0StartInt, numberOfDigitsPosition0));
+                feeAmountPosition0 = Convert.ToInt32(fee0Start.Substring(fee0StartInt, numberOfDigitsPosition0));
 
                 int feeAmountTotal = feeAmountPosition0;
                 Console.WriteLine("Total: £" + feeAmountTotal);
@@ -140,7 +139,7 @@ namespace SummerSchool
                 fee0StartInt = (fee0StartInt + 1);
                 int fee0End = fee0Start.LastIndexOf(')');
                 int numberOfDigitsPosition0 = (fee0End - fee0StartInt);
-                int feeAmountPosition0 = Convert.ToInt32(fee0Start.Substring(fee0StartInt, numberOfDigitsPosition0));
+                feeAmountPosition0 = Convert.ToInt32(fee0Start.Substring(fee0StartInt, numberOfDigitsPosition0));
 
                 string fee1Start = studentList[1];
                 int fee1StartInt = fee1Start.IndexOf('£');
@@ -179,12 +178,7 @@ namespace SummerSchool
                 int feeAmountTotal = feeAmountPosition0 + feeAmountPosition1 + feeAmountPosition2;
                 Console.WriteLine("Total: £" + feeAmountTotal);
             }
-
-
-            //int feeAmountTotal = feeAmountPosition0 + feeAmountPosition1;
-            //Console.WriteLine("Total: £" + feeAmountTotal);
         }
-
         static void Main(string[] args)
         {
             Menu();
@@ -438,13 +432,32 @@ namespace SummerSchool
         }
         public static void Option2()
         {
-            Console.WriteLine("Please enter the name of the student you want to unenroll");
+            //returns student list firt
+            studentFeeList();
+            for (int i = 0; i < studentList.Length; i++)
+            {
+
+                Console.WriteLine(i + 1 + ". " + studentList[i]);
+            }
+            feesTotal();
+            Console.WriteLine();
+            //choose a number
+            Console.WriteLine("Please enter the number that corresponds to the student you want to unenroll");
+            Console.WriteLine();
             string unenrolledStudent = Console.ReadLine();
-            Console.WriteLine(unenrolledStudent + " has been unenrolled");
-            Console.WriteLine();
-            Console.WriteLine("Press any key to return to main menu");
-            Console.WriteLine();
-            Console.ReadKey();
+            if (unenrolledStudent == "1")
+            {
+                Console.WriteLine();
+                Console.WriteLine(studentList[0] + " has been unenrolled");
+                Console.WriteLine();
+                Console.WriteLine("Press any key to return to main menu");
+                Console.WriteLine();
+                studentList[0] = studentList[1];
+                studentList[1] = studentList[2];
+                studentList[2] = null;
+
+                Console.ReadKey();
+            }
         }
         public static bool Is3(string choice)
         {
